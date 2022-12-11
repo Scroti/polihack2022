@@ -9,16 +9,17 @@ import { getFirestore } from 'firebase/firestore';
 import { app, db } from '../../firebase';
 import { getDocs, collection } from 'firebase/firestore';
 import createPdf from '../../functions/createPDF'
-const Home = () => {
-    const [departments, setDepartments] = useState([]);
+import AdminCard from '../AdminCard/AdminCard';
+const Admin = () => {
+    const [docs, setDocs] = useState([]);
 
     const fetchDepartments = async () => {
 
-        await getDocs(collection(db, "departments"))
+        await getDocs(collection(db, "documents"))
             .then((querySnapshot) => {
-                const newData = querySnapshot?.docs
+                const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
-                setDepartments(newData);
+                setDocs(newData);
 
             }).catch(console.log)
 
@@ -27,20 +28,17 @@ const Home = () => {
         fetchDepartments();
     }, [])
 
+
   return (
-    <div className='container-home bg-dashboard'>
-        <h4 className=' -mt-20 p-5'>Select the department for what you want to create the request:</h4>
-    <div className=" gap-4 grid grid-cols-3 mx-auto">
-    
+    <div className='Auth-form-container flex-col'>
+        <h4 className=' -mt-20 p-5'>Documents Requested:</h4>
 
-{departments.map((value)=>{
-    return <div className='h-1/3'><Card key={value.uid} depName={value.depName} depDescription={value.depDescription} requests={value.requests}></Card></div>
+{docs.map((value)=>{
+    return <div className='h-1/3'><AdminCard reqName={value.name} createdBy={value.createdBy}/></div>
 })}
-        
-
-        </div>
+      
     </div>
   )
 }
 
-export default Home
+export default Admin

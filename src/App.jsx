@@ -6,6 +6,9 @@ import Home from "./components/HomePage/Home"
 import Navbar from "./components/Navbar/Navbar"
 import Profile from "./Profile/Profile"
 import LandingPage from "./components/LandingPage/LandingPage"
+import DaysOff from "./components/DaysOff/DaysOff"
+import ViewPdf from "./components/ViewPdf/ViewPdf"
+import Admin from "./components/Admin/Admin"
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/daysoff" element={<DaysOff/>}/>
+        <Route path="/viewpdf" element={<ViewPdf/>}/>
+        <Route path="/admin" element={<Admin/>}/>
       </Routes>
     </BrowserRouter>
   )

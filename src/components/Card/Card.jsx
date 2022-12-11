@@ -1,7 +1,8 @@
 import React from 'react'
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 
-const Card = ({ depName, depDescription,requests }) => {
+const Card = ({ key,depName, depDescription,requests}) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -55,10 +56,10 @@ const Card = ({ depName, depDescription,requests }) => {
         <h2 className='text-black'>The requests available for your department are:</h2>
         </div>
         {requests.map((x)=>{
-          return <div className='py-3 flex cursor-pointer'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          return <div className='py-3 flex cursor-pointer'><Link className="flex" to='/daysoff'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        {x}</div>
+        {x}</Link></div>
         })}
                 <button className="float-right h-10 items-center flex bg-blue-500 text-white right-0" onClick={closeModal}>Close
 

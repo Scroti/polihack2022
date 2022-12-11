@@ -62,7 +62,12 @@ const Auth = (props) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(data => {
       localStorage.setItem('loggedemail',JSON.stringify(loginEmail));
-      navigate('/home');
+
+      console.log(loginEmail === 'admin@pappery.com')
+      if(loginEmail === 'admin@pappery.com'){
+        navigate('/admin')
+      }
+      else{navigate('/home');}
 
     }).catch(error => {
       userNotExisting();
@@ -71,10 +76,9 @@ const Auth = (props) => {
 
   }
   const handleSignUp = (username, email, password) => {
-    passwordNotMatch();
     event.preventDefault();
     registerWithEmailAndPassword(username, email, password)
-
+    setLoginMode(true);
 
   }
   
