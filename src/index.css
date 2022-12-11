@@ -71,3 +71,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.bg-landing{
+  background-image: url('./assets/Landing.jpg');
+  background-repeat:no-repeat;
+  background-size: cover;
+  
+}
+
+.bg-dashboard{
+  background-image: url('./assets/bg-dashboard.jpg');
+  background-repeat:no-repeat;
+  background-size: cover; 
+}
